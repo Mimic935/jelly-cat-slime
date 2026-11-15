@@ -111,7 +111,6 @@ h1 span { display:block; white-space:nowrap; }
 .template-option:hover { background:var(--cream); }
 .template-option[aria-pressed="true"] { background:var(--cream); border-color:var(--ink); box-shadow:0 2px var(--ink); }
 .template-option:focus-visible { outline-offset:-3px; }
-.gallery-detail .template-picker { display:none; }
 @media (orientation:landscape) {
   .intro { display:flex; flex-direction:column; align-items:flex-start; min-width:0; }
   .template-picker { order:-1; align-self:stretch; margin:0 0 16px; }
@@ -354,61 +353,18 @@ h1 span { display:block; white-space:nowrap; }
   .paint-toggle,.paint-tools button { min-height:44px; padding-inline:8px; }
   .paint-tools { gap:4px 9px; }
 }
-
-[hidden] { display:none !important; }
-.gallery-nav { display:flex; gap:8px; align-items:center; margin-block:20px -20px; flex-wrap:wrap; }
-.gallery-nav a,.gallery-button { border:1px solid var(--ink); border-radius:22px; padding:8px 13px; min-height:44px;
-  display:inline-flex; align-items:center; justify-content:center; color:var(--ink);
-  font:inherit; font-size:.84rem; font-weight:800; text-decoration:none; cursor:pointer; background:var(--cream); }
-.gallery-nav a[aria-current],.gallery-button.primary { background:var(--ink); color:var(--cream); }
-.gallery-button:disabled { opacity:.5; cursor:default; }
-.gallery-page { margin-block:52px 46px; }
-.gallery-page h1 { font-size:clamp(2.9rem,7vw,6rem); margin-left:0; }
-.gallery-subtitle { max-width:45ch; line-height:1.7; }
-.gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr)); gap:18px; margin-block:22px; }
-.gallery-card { margin:0; min-width:0; border:1px solid var(--ink); border-radius:19px; background:var(--cream); box-shadow:0 3px var(--ink); overflow:hidden; }
-.gallery-card a { color:inherit; text-decoration:none; display:block; }
-.gallery-card img { width:100%; display:block; aspect-ratio:4/3; object-fit:cover; background:#fff0bc; }
-.gallery-card h2 { font-size:1.03rem; margin:0; overflow-wrap:anywhere; }
-.gallery-card-info { padding:11px 13px; display:grid; gap:5px; }
-.gallery-card p { margin:0; font-size:.8rem; overflow-wrap:anywhere; }
-.gallery-toolbar { display:flex; gap:8px; flex-wrap:wrap; margin-block:14px 4px; }
-.gallery-status:empty { display:none; }
-.gallery-review-controls { padding:0 13px 12px; }
-.gallery-dialog { width:min(420px,calc(100% - 28px)); max-height:90vh; overflow:auto; color:var(--ink);
-  border:1px solid var(--ink); border-radius:20px; padding:18px; background:var(--cream); box-shadow:0 4px var(--ink); }
-.gallery-dialog::backdrop { background:#172b6b70; }
-.gallery-dialog h2 { margin:0 0 12px; }
-.gallery-dialog img { width:100%; display:block; max-height:35vh; object-fit:contain; border-radius:12px; }
-.gallery-dialog label { display:grid; gap:5px; margin-top:12px; font-size:.88rem; font-weight:800; }
-.gallery-dialog input { border:1px solid var(--ink); border-radius:8px; padding:9px; font:inherit; font-size:1rem; color:inherit; background:white; }
-.gallery-detail .tasting,.gallery-detail #paint-toggle,.gallery-detail #reset,.gallery-detail #save-work,.gallery-detail #import-work,.gallery-detail #gallery-submit,.gallery-detail .stage-label::after { display:none; }
-.gallery-detail .stage-label,.gallery-detail .cat-name { cursor:default; }
-.gallery-submit { margin-top:14px; }
-@media(max-width:760px) {
-  .gallery-nav { margin-block:12px 0; }
-  .gallery-page { margin-top:28px; }
-  .gallery-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
-}
-
-.gallery-zone { padding-block:20px 24px; border-top:1px dashed #223b8b63; }
-.gallery-zone h2 { margin:0; font-size:clamp(1.35rem,3vw,1.8rem); font-weight:850; }
-.gallery-zone .gallery-grid { margin:14px 0 0; }
-.gallery-zone .gallery-grid:empty { display:none; }
-.gallery-zone .gallery-button { margin-top:14px; }
-.gallery-zone .gallery-status { margin:10px 0 0; font-size:.88rem; }
-#gallery-zones { margin-top:28px; }
-.review-login { align-items:center; }
-.review-login label { display:flex; align-items:center; gap:8px; }
-.review-login input { width:11em; max-width:50vw; min-height:44px; padding:7px; border:1px solid var(--ink); border-radius:10px; font:inherit; }
-#review-login-status { width:100%; margin:0; }
-#review-login-status:empty { display:none; }
-.gallery-zone-nav { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
-
 /* The ribbons and doodles frame the cat across multiple depths. */
 #jelly-entry { display:none; }
 :root[data-jelly-view="entry"] #jelly-entry { display:grid; }
-:root[data-jelly-view="entry"] :is(.masthead:not(.entry-masthead),.gallery-nav,.counter-top,.file-status,#gallery-page) { display:none; }
+:root[data-jelly-view="entry"] :is(.masthead:not(.entry-masthead),.studio-nav,.counter-top,.file-status) { display:none; }
+[hidden] { display:none !important; }
+.studio-nav { display:flex; align-items:center; margin-block:20px -20px; }
+.studio-nav a,.entry-start {
+  display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:8px 13px;
+  border:1px solid var(--ink); border-radius:22px; background:var(--ink); color:var(--cream);
+  font:inherit; font-size:.84rem; font-weight:800; text-decoration:none;
+}
+@media (max-width:760px) { .studio-nav { margin-block:12px 0; } }
 .entry {
   --entry-size:min(88vw,460px,54svh);
   min-height:100svh; grid-template-rows:auto 1fr;
@@ -500,14 +456,13 @@ h1 span { display:block; white-space:nowrap; }
 }
 .entry-content { width:min(100%,480px); text-align:center; }
 .entry-content p { margin:0 0 14px; font-weight:640; line-height:1.55; }
-.entry-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; width:min(100%,400px); margin-inline:auto; }
-.entry-actions .gallery-button { justify-content:center; min-height:48px; }
-.entry-actions .primary { box-shadow:0 3px 0 #16285d; }
-.entry-actions .gallery-button:hover { box-shadow:0 2px 0 var(--ink); }
-.entry-actions .gallery-button:focus-visible { outline:3px solid var(--ink); outline-offset:3px; }
+.entry-actions { width:min(100%,195px); margin-inline:auto; }
+.entry-start { width:100%; min-height:48px; box-shadow:0 3px 0 #16285d; }
+.entry-start:hover { box-shadow:0 2px 0 var(--ink); }
+.entry-start:focus-visible { outline:3px solid var(--ink); outline-offset:3px; }
 @media (orientation:portrait) {
   .entry { --entry-size:min(88vw,440px,48svh); }
-  .entry-actions { grid-template-columns:minmax(0,1fr); width:min(100%,300px); }
+  .entry-actions { width:min(100%,300px); }
 }
 @media (max-height:540px) and (orientation:landscape) {
   .entry { --entry-size:min(52vw,49svh); }
@@ -516,7 +471,7 @@ h1 span { display:block; white-space:nowrap; }
   .entry-content p { font-size:.82rem; margin-bottom:7px; }
   .entry-content p br { display:none; }
   #entry-touch-hint { margin-right:.65em; }
-  .entry-actions .gallery-button { min-height:44px; }
+  .entry-start { min-height:44px; }
 }
 @media (prefers-reduced-motion:reduce) {
   .entry-ready :is(.entry-layer,.entry-cat) { animation:none; }
@@ -559,8 +514,7 @@ h1 span { display:block; white-space:nowrap; }
     <div class="entry-content">
       <p><span id="entry-touch-hint">轻戳猫猫，或按住拉一拉。</span><br>在创作台给你的果冻猫换色、彩绘。</p>
       <div class="entry-actions">
-        <a class="gallery-button primary" href="#studio">进入创作台</a>
-        <a class="gallery-button" href="#gallery">直接逛展厅</a>
+        <a class="entry-start" href="#studio">进入创作台</a>
       </div>
     </div>
   </div>
@@ -580,28 +534,18 @@ h1 span { display:block; white-space:nowrap; }
     </button>
   </div>
 </header>
-<nav class="frame gallery-nav" aria-label="站点导航">
-  <a id="studio-link" href="#studio">创作台</a>
-  <a id="gallery-link" href="#gallery">展厅</a>
+<nav class="frame studio-nav" aria-label="站点导航">
+  <a href="#studio" aria-current="page">创作台</a>
 </nav>
 <p class="frame file-status" id="file-status" role="status"></p>
 <main class="frame counter-top">
   <section class="intro" aria-labelledby="title">
     <h1 id="title"><span>果冻！</span><span>史莱姆</span></h1>
-    <p id="gallery-studio-copy" class="intro-copy">轻戳一下，听它啵一声。<br>按住一处轻轻拉，也可以两指一起拉。</p>
+    <p class="intro-copy">轻戳一下，听它啵一声。<br>按住一处轻轻拉，也可以两指一起拉。</p>
     <section class="template-picker" aria-labelledby="templates-title" hidden>
       <h2 id="templates-title">选择模板</h2>
       <div class="template-list" id="template-list" role="group" aria-labelledby="templates-title"></div>
     </section>
-    <button id="gallery-submit" class="gallery-button primary gallery-submit" type="button">投稿到展厅</button>
-    <div id="gallery-detail" hidden>
-      <p id="gallery-author"></p>
-      <div class="gallery-toolbar">
-        <a id="gallery-back" class="gallery-button" href="#gallery">返回展厅</a>
-        <button id="gallery-copy" class="gallery-button" type="button">复制作品链接</button>
-      </div>
-      <p id="gallery-share-status" role="status"></p>
-    </div>
   </section>
   <section class="play" aria-label="果冻史莱姆互动区">
     <div class="stage" id="stage">
@@ -684,39 +628,6 @@ h1 span { display:block; white-space:nowrap; }
     </details>
   </section>
 </main>
-<section id="gallery-page" class="frame gallery-page" hidden>
-  <h1 id="gallery-title">展厅</h1>
-  <p id="gallery-subtitle" class="gallery-subtitle">点开一只果冻史莱姆，就能轻戳、拉伸它。</p>
-  <div id="review-tools" class="gallery-toolbar" hidden>
-    <button type="button" id="review-pending" class="gallery-button">待审核</button>
-    <button type="button" id="review-public" class="gallery-button">已展出</button>
-    <button type="button" id="review-logout" class="gallery-button" hidden>退出审核</button>
-  </div>
-  <form id="review-login" class="gallery-toolbar review-login" hidden>
-    <label>管理员密码 <input id="review-password" type="password" autocomplete="current-password" required maxlength="128"></label>
-    <button type="submit" class="gallery-button primary">登录审核</button>
-    <p id="review-login-status" role="status"></p>
-  </form>
-  <p id="gallery-status" class="gallery-status" role="status"></p>
-  <div id="gallery-zones" hidden></div>
-  <div id="gallery-grid" class="gallery-grid" hidden></div>
-  <button type="button" id="gallery-more" class="gallery-button" hidden>加载更多</button>
-</section>
-<dialog id="gallery-dialog" class="gallery-dialog" aria-labelledby="gallery-dialog-title">
-  <form id="gallery-form">
-    <h2 id="gallery-dialog-title">投稿到展厅</h2>
-    <img id="preview-image" alt="当前果冻猫的投稿预览">
-    <label>作品名 <input id="submission-name" maxlength="24" required></label>
-    <label>作者昵称（选填） <input id="submission-author" maxlength="24" autocomplete="nickname"></label>
-    <p>作品审核通过后，任何人都可以查看。</p>
-    <p id="submission-status" class="gallery-status" role="status"></p>
-    <div class="gallery-toolbar">
-      <button type="submit" class="gallery-button primary" id="send-submission">提交投稿</button>
-      <button type="button" class="gallery-button" id="close-submission">关闭</button>
-    </div>
-  </form>
-</dialog>
-<script src="./gallery-config.js"></script>
 <script>
 (() => {
   const stage = document.querySelector("#stage");
@@ -2129,8 +2040,8 @@ h1 span { display:block; white-space:nowrap; }
   const studioSoundSlot = soundButton.parentElement;
   setupEntryJelly(entryScene.querySelector(".entry-cat"));
   let hasPlayedWelcome = false;
-  function showEntry(route) {
-    const welcome = route === "welcome";
+  function showEntry() {
+    const welcome = location.hash !== "#studio";
     entryRoot.dataset.jellyView = welcome ? "entry" : "app";
     const soundSlot = welcome ? entrySoundSlot : studioSoundSlot;
     if (soundButton.parentElement !== soundSlot) soundSlot.prepend(soundButton);
@@ -2139,357 +2050,10 @@ h1 span { display:block; white-space:nowrap; }
       Promise.allSettled(entryImages.map((image) => image.decode()))
         .then(() => entryScene.classList.add("entry-ready"));
     }
-    return welcome;
   }
+  addEventListener("hashchange", showEntry);
+  showEntry();
 
-
-  function showGalleryZones(current) {
-    const links = document.createElement("nav");
-    links.className = "gallery-zone-nav";
-    links.setAttribute("aria-label", "展区");
-    zones.append(links);
-    for (const [templateId, template] of templates) {
-      const zone = document.createElement("section");
-      zone.className = "gallery-zone";
-      zone.dataset.template = templateId;
-      const title = document.createElement("h2");
-      title.id = "gallery-zone-" + templateId;
-      title.textContent = template.name;
-      title.tabIndex = -1;
-      zone.setAttribute("aria-labelledby", title.id);
-      const jump = document.createElement("button");
-      jump.type = "button";
-      jump.className = "gallery-button";
-      jump.textContent = template.name;
-      jump.addEventListener("click", () => {
-        title.focus({preventScroll:true});
-        zone.scrollIntoView();
-      });
-      links.append(jump);
-      const status = document.createElement("p");
-      status.className = "gallery-status";
-      status.setAttribute("role", "status");
-      const cards = document.createElement("div");
-      cards.className = "gallery-grid";
-      const loadMore = document.createElement("button");
-      loadMore.type = "button";
-      loadMore.className = "gallery-button";
-      loadMore.textContent = "加载更多";
-      loadMore.setAttribute("aria-label", "加载更多" + template.name + "作品");
-      loadMore.hidden = true;
-      zone.append(title, status, cards, loadMore);
-      zones.append(zone);
-
-      let nextOffset = 0;
-      async function load() {
-        loadMore.disabled = true;
-        status.textContent = "正在加载作品…";
-        try {
-          const query = new URLSearchParams({ template:templateId, offset:String(nextOffset) });
-          const data = await galleryRequest("/api/works?" + query);
-          if (current !== generation) return;
-          for (const work of data.works) cards.append(workCard(work, false));
-          nextOffset += data.works.length;
-          status.textContent = nextOffset ? "" : "这个分区还没有作品。";
-          loadMore.hidden = !data.more;
-        } catch {
-          if (current !== generation) return;
-          status.textContent = "这个分区暂时加载失败。";
-          loadMore.hidden = true;
-        } finally {
-          loadMore.disabled = false;
-        }
-      }
-      loadMore.addEventListener("click", load);
-      if (apiOrigin) void load();
-    }
-  }
-
-  const main = document.querySelector("main");
-  const page = document.querySelector("#gallery-page");
-  const zones = document.querySelector("#gallery-zones");
-  const grid = document.querySelector("#gallery-grid");
-  const galleryStatus = document.querySelector("#gallery-status");
-  const more = document.querySelector("#gallery-more");
-  const dialog = document.querySelector("#gallery-dialog");
-  const submissionStatus = document.querySelector("#submission-status");
-  const sendSubmission = document.querySelector("#send-submission");
-  const closeSubmission = document.querySelector("#close-submission");
-  const reviewLogin = document.querySelector("#review-login");
-  const apiOrigin = window.JELLY_GALLERY_API || "";
-  const ownEndpoint = location.origin === apiOrigin;
-  const reviewLogout = document.querySelector("#review-logout");
-  const reviewPassword = document.querySelector("#review-password");
-  const reviewLoginStatus = document.querySelector("#review-login-status");
-  const endpoint = (path) => (ownEndpoint ? "" : apiOrigin) + path;
-  let studioWork = null, featured = false, route = "", generation = 0;
-  let offset = 0, reviewStatus = "pending", snapshot;
-
-  async function galleryRequest(path, options = {}) {
-    if (!apiOrigin) throw new Error("展厅服务尚未连接。");
-    const response = await fetch(endpoint(path), options);
-    if (!response.ok) {
-      const data = await response.json().catch(() => ({}));
-      const error = new Error(data.error || "展厅暂时无法连接。");
-      error.status = response.status;
-      throw error;
-    }
-    return response.json();
-  }
-
-  function post(path, data) {
-    return galleryRequest(path, {
-      method:"POST", headers:{ "Content-Type":"application/json" }, body:JSON.stringify(data)
-    });
-  }
-
-  function makePreview() {
-    const sample = document.createElement("canvas");
-    sample.width = 320;
-    sample.height = 240;
-    const ctx = sample.getContext("2d");
-    const size = 294, x = 13, y = -23;
-    const root = getComputedStyle(document.documentElement);
-    const body = document.createElement("canvas");
-    body.width = body.height = size;
-    const material = body.getContext("2d");
-    if (flavor !== "custom") {
-      const filter = root.getPropertyValue("--cat-filter").trim();
-      if ("filter" in material) material.filter = filter;
-    }
-    material.drawImage(art, 0, 0, size, size);
-    if (flavor === "custom") {
-      const rgba = material.getImageData(0,0,size,size);
-      const transfer = ["r","g","b"].map(c => document.querySelector("#tint-"+c).getAttribute("tableValues").split(" ").map(Number));
-      const pixels = rgba.data;
-      for (let i = 0; i < pixels.length; i += 4) {
-        if (!pixels[i+3]) continue;
-        const t = (pixels[i]*.2126+pixels[i+1]*.7152+pixels[i+2]*.0722) * 4/255;
-        const a = Math.min(3,Math.floor(t)), f = t-a;
-        for (let c=0;c<3;c++) pixels[i+c] = 255*(transfer[c][a]*(1-f)+transfer[c][a+1]*f);
-      }
-      material.putImageData(rgba,0,0);
-    }
-    ctx.fillStyle = root.getPropertyValue("--ray-light").trim();
-    ctx.fillRect(0,0,320,240);
-    ctx.fillStyle = root.getPropertyValue("--ray").trim();
-    for (let i=0;i<10;i++) {
-      const a=i*Math.PI/5;
-      ctx.beginPath();ctx.moveTo(160,171);
-      ctx.lineTo(160+420*Math.cos(a),171+420*Math.sin(a));
-      ctx.lineTo(160+420*Math.cos(a+.26),171+420*Math.sin(a+.26));ctx.fill();
-    }
-    ctx.drawImage(body,x,y);
-    if (surface?.ink) {
-      const { padding, side } = surface;
-      ctx.drawImage(inkCanvas,padding,padding,side,side,x,y,size,size);
-    }
-    return sample.toDataURL("image/jpeg",.82);
-  }
-
-  document.querySelector("#gallery-submit").addEventListener("click", () => {
-    if (!apiOrigin) { fileStatus.textContent = "展厅服务尚未连接。你可以先保存 JSON 作品。"; return; }
-    if (!art.complete || !art.naturalWidth) return;
-    if (painting) setPainting(false);
-    clearDeformation();
-    if (strokes.length) prepareSurface();
-    snapshot = { work:currentWork(), preview:makePreview() };
-    document.querySelector("#preview-image").src = snapshot.preview;
-    document.querySelector("#submission-name").value = snapshot.work.name;
-    submissionStatus.textContent = "";
-    sendSubmission.disabled = false;
-    dialog.showModal();
-  });
-  closeSubmission.addEventListener("click", () => dialog.close());
-  dialog.addEventListener("cancel", (event) => {
-    if (closeSubmission.disabled) event.preventDefault();
-  });
-  document.querySelector("#gallery-form").addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const name = document.querySelector("#submission-name").value.trim();
-    if (!name) return;
-    const author = document.querySelector("#submission-author").value.trim();
-    sendSubmission.disabled = closeSubmission.disabled = true;
-    submissionStatus.textContent = "正在提交…";
-    try {
-      await post("/api/works",{ work:{ ...snapshot.work,name }, author,preview:snapshot.preview.split(",")[1] });
-      submissionStatus.textContent = "投稿已收到，审核通过后会出现在展厅。";
-    } catch (error) {
-      submissionStatus.textContent = error.message === "Failed to fetch" ? "网络连接失败，请稍后重试。" : error.message;
-      sendSubmission.disabled = false;
-    } finally { closeSubmission.disabled = false; }
-  });
-
-  function workCard(work, reviewing) {
-    const card = document.createElement("article");
-    card.className = "gallery-card";
-    const link = document.createElement("a");
-    link.href = (reviewing ? "#review-cat/" : "#cat/") + work.id;
-    const image = document.createElement("img");
-    image.alt = "";
-    image.loading = "lazy";
-    image.src = endpoint((reviewing ? "/api/review/" : "/api/works/") + work.id + "/preview");
-    const info = document.createElement("div");
-    info.className = "gallery-card-info";
-    const name = document.createElement("h2");
-    name.textContent = work.name;
-    const author = document.createElement("p");
-    author.textContent = work.author || "匿名创作者";
-    info.append(name,author);
-    link.append(image,info);
-    card.append(link);
-    if (reviewing) {
-      const controls = document.createElement("div");
-      controls.className = "gallery-review-controls";
-      const action = document.createElement("button");
-      action.type = "button";
-      action.className = "gallery-button";
-      const pending = reviewStatus === "pending";
-      action.textContent = pending ? "批准上架" : "下架";
-      action.addEventListener("click", async () => {
-        action.disabled = true;
-        try {
-          await post("/api/review/" + work.id + (pending ? "/approve" : "/hide"),{});
-          await showRoute();
-        } catch (error) { galleryStatus.textContent = error.message; action.disabled = false; }
-      });
-      controls.append(action);
-      card.append(controls);
-    }
-    return card;
-  }
-
-  function showReviewGate(error) {
-    if (error.status !== 401) return false;
-    galleryStatus.textContent = "输入管理员密码后查看投稿。";
-    reviewLogin.hidden = false;
-    return true;
-  }
-
-  async function showReviewWorks(current) {
-    more.hidden = true;
-    galleryStatus.textContent = "正在加载作品…";
-    const path = "/api/review?status="+reviewStatus+"&offset=";
-    try {
-      const data = await galleryRequest(path+offset);
-      if (current !== generation) return;
-      reviewLogout.hidden = false;
-      document.querySelector("#review-pending").hidden = false;
-      document.querySelector("#review-public").hidden = false;
-      for (const work of data.works) grid.append(workCard(work,true));
-      offset += data.works.length;
-      more.hidden = !data.more;
-      galleryStatus.textContent = offset ? "" : "这里还没有作品。";
-    } catch (error) {
-      if (current !== generation) return;
-      if (showReviewGate(error)) return;
-      galleryStatus.textContent = "作品暂时加载失败，请刷新重试。";
-    }
-  }
-
-  async function showRoute() {
-    const current = ++generation;
-    route = location.hash.slice(1) || "welcome";
-    if (showEntry(route)) return;
-    const reviewing = route === "review" || route.startsWith("review-cat/");
-    const detail = route.match(/^(?:review-)?cat\/([a-f0-9-]{36})$/);
-    const studio = !detail && route !== "gallery" && !reviewing;
-    if (reviewing && apiOrigin && !ownEndpoint) { location.href = apiOrigin + "/#" + route; return; }
-    document.querySelector("#studio-link").toggleAttribute("aria-current",studio);
-    document.querySelector("#gallery-link").toggleAttribute("aria-current",!studio);
-    document.querySelector("#review-tools").hidden = !reviewing;
-    reviewLogin.hidden = true;
-    reviewLogout.hidden = true;
-    reviewLoginStatus.textContent = "";
-    document.querySelector("#review-pending").hidden = true;
-    document.querySelector("#review-public").hidden = true;
-    document.querySelector("#gallery-title").textContent = reviewing ? "审核作品" : "展厅";
-    document.querySelector("#gallery-subtitle").textContent = reviewing ? "批准后的作品会出现在公开展厅。" : "点开一只果冻史莱姆，就能轻戳、拉伸它。";
-    document.querySelector("#review-pending").setAttribute("aria-pressed",String(reviewStatus === "pending"));
-    document.querySelector("#review-public").setAttribute("aria-pressed",String(reviewStatus === "public"));
-    document.querySelector("#gallery-back").href = reviewing ? "#review" : "#gallery";
-    main.classList.toggle("gallery-detail",Boolean(detail));
-    document.querySelector("#gallery-detail").hidden = !detail;
-    document.querySelector("#gallery-studio-copy").hidden = Boolean(detail);
-    catName.readOnly = Boolean(detail);
-    if (studio) {
-      page.hidden = true;
-      main.hidden = false;
-      if (featured && studioWork) loadWork(studioWork);
-      featured = false;
-      studioWork = null;
-      return;
-    }
-    if (!featured && !studioWork) studioWork = currentWork();
-    main.hidden = true;
-    page.hidden = false;
-    zones.replaceChildren();
-    zones.hidden = reviewing || Boolean(detail);
-    grid.replaceChildren();
-    grid.hidden = !reviewing || Boolean(detail);
-    galleryStatus.textContent = "";
-    offset = 0;
-    more.hidden = true;
-    if (!detail) {
-      if (reviewing && apiOrigin) await showReviewWorks(current);
-      else if (!reviewing) showGalleryZones(current);
-      if (!apiOrigin) galleryStatus.textContent = "展厅服务尚未连接。";
-      return;
-    }
-    galleryStatus.textContent = "正在加载作品…";
-    const id = detail[1];
-    try {
-      const data = await galleryRequest((reviewing ? "/api/review/" : "/api/works/")+id);
-      if (current !== generation) return;
-      main.hidden = false;
-      page.hidden = true;
-      loadWork(data.work);
-      featured = true;
-      document.querySelector("#gallery-author").textContent = data.author || "匿名创作者";
-      document.querySelector("#gallery-copy").hidden = reviewing;
-    } catch (error) {
-      if (current !== generation || (reviewing && showReviewGate(error))) return;
-      galleryStatus.textContent = error.status === 404 ? "找不到这件作品，可能已下架。" : "作品暂时无法打开。";
-    }
-  }
-
-  reviewLogin.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const submit = reviewLogin.querySelector("[type=submit]");
-    const password = reviewPassword.value;
-    reviewPassword.value = "";
-    submit.disabled = true;
-    reviewLoginStatus.textContent = "正在登录…";
-    try {
-      await post("/api/review/session",{password});
-      await showRoute();
-    } catch (error) {
-      reviewLoginStatus.textContent = error.message;
-      reviewPassword.focus();
-    } finally {
-      submit.disabled = false;
-    }
-  });
-  reviewLogout.addEventListener("click", async () => {
-    try {
-      await galleryRequest("/api/review/session",{method:"DELETE"});
-      await showRoute();
-    } catch (error) {
-      galleryStatus.textContent = error.message;
-    }
-  });
-
-  more.addEventListener("click", () => showReviewWorks(generation));
-  for (const status of ["pending","public"]) {
-    document.querySelector("#review-"+status).addEventListener("click", () => { reviewStatus = status; void showRoute(); });
-  }
-  document.querySelector("#gallery-copy").addEventListener("click", async () => {
-    const status = document.querySelector("#gallery-share-status");
-    try { await navigator.clipboard.writeText(location.href); status.textContent = "作品链接已复制。"; }
-    catch { status.textContent = "可以从地址栏复制作品链接。"; }
-  });
-  addEventListener("hashchange", () => { void showRoute(); });
-  void showRoute();
 
 })();
 </script>

@@ -1,7 +1,15 @@
 /* The ribbons and doodles frame the cat across multiple depths. */
 #jelly-entry { display:none; }
 :root[data-jelly-view="entry"] #jelly-entry { display:grid; }
-:root[data-jelly-view="entry"] :is(.masthead:not(.entry-masthead),.gallery-nav,.counter-top,.file-status,#gallery-page) { display:none; }
+:root[data-jelly-view="entry"] :is(.masthead:not(.entry-masthead),.studio-nav,.counter-top,.file-status) { display:none; }
+[hidden] { display:none !important; }
+.studio-nav { display:flex; align-items:center; margin-block:20px -20px; }
+.studio-nav a,.entry-start {
+  display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:8px 13px;
+  border:1px solid var(--ink); border-radius:22px; background:var(--ink); color:var(--cream);
+  font:inherit; font-size:.84rem; font-weight:800; text-decoration:none;
+}
+@media (max-width:760px) { .studio-nav { margin-block:12px 0; } }
 .entry {
   --entry-size:min(88vw,460px,54svh);
   min-height:100svh; grid-template-rows:auto 1fr;
@@ -93,14 +101,13 @@
 }
 .entry-content { width:min(100%,480px); text-align:center; }
 .entry-content p { margin:0 0 14px; font-weight:640; line-height:1.55; }
-.entry-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; width:min(100%,400px); margin-inline:auto; }
-.entry-actions .gallery-button { justify-content:center; min-height:48px; }
-.entry-actions .primary { box-shadow:0 3px 0 #16285d; }
-.entry-actions .gallery-button:hover { box-shadow:0 2px 0 var(--ink); }
-.entry-actions .gallery-button:focus-visible { outline:3px solid var(--ink); outline-offset:3px; }
+.entry-actions { width:min(100%,195px); margin-inline:auto; }
+.entry-start { width:100%; min-height:48px; box-shadow:0 3px 0 #16285d; }
+.entry-start:hover { box-shadow:0 2px 0 var(--ink); }
+.entry-start:focus-visible { outline:3px solid var(--ink); outline-offset:3px; }
 @media (orientation:portrait) {
   .entry { --entry-size:min(88vw,440px,48svh); }
-  .entry-actions { grid-template-columns:minmax(0,1fr); width:min(100%,300px); }
+  .entry-actions { width:min(100%,300px); }
 }
 @media (max-height:540px) and (orientation:landscape) {
   .entry { --entry-size:min(52vw,49svh); }
@@ -109,7 +116,7 @@
   .entry-content p { font-size:.82rem; margin-bottom:7px; }
   .entry-content p br { display:none; }
   #entry-touch-hint { margin-right:.65em; }
-  .entry-actions .gallery-button { min-height:44px; }
+  .entry-start { min-height:44px; }
 }
 @media (prefers-reduced-motion:reduce) {
   .entry-ready :is(.entry-layer,.entry-cat) { animation:none; }

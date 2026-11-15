@@ -9,8 +9,8 @@
   const studioSoundSlot = soundButton.parentElement;
   setupEntryJelly(entryScene.querySelector(".entry-cat"));
   let hasPlayedWelcome = false;
-  function showEntry(route) {
-    const welcome = route === "welcome";
+  function showEntry() {
+    const welcome = location.hash !== "#studio";
     entryRoot.dataset.jellyView = welcome ? "entry" : "app";
     const soundSlot = welcome ? entrySoundSlot : studioSoundSlot;
     if (soundButton.parentElement !== soundSlot) soundSlot.prepend(soundButton);
@@ -19,6 +19,7 @@
       Promise.allSettled(entryImages.map((image) => image.decode()))
         .then(() => entryScene.classList.add("entry-ready"));
     }
-    return welcome;
   }
+  addEventListener("hashchange", showEntry);
+  showEntry();
 

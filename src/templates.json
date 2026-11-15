@@ -1,0 +1,13 @@
+{
+  "hamster": {
+    "name": "果冻鼠",
+    "defaultFlavor": "original",
+    "asset": "template-assets/hamster.webp",
+    "marks": [
+      { "bounds": [401, 568, 508, 676], "path": [[430, 594], [482, 622], [430, 650]], "radius": 10.5, "cleanupMargin": 0.022 },
+      { "bounds": [747, 568, 855, 677], "path": [[826, 594], [774, 622], [826, 650]], "radius": 10.5, "cleanupMargin": 0.022 },
+      { "bounds": [553, 658, 702, 705], "path": [[583, 693], [627, 667], [672, 693]], "radius": 8.5 },
+      { "bounds": [595, 607, 658, 656] }
+    ]
+  }
+}
